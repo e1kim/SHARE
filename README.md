@@ -80,11 +80,3 @@ This section provides instructions for EPISODE evaluation.
 
 If you use this project in your research, please cite it as follows:
 
-```bash
-@article{kim2024share,
-  title={SHARE: Shared Memory-Aware Open-Domain Long-Term Dialogue Dataset Constructed from Movie Script},
-  author={Kim, Eunwon and Park, Chanho and Chang, Buru},
-  journal={arXiv preprint arXiv:2410.20682},
-  year={2024}
-}
-```
