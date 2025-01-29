@@ -116,7 +116,7 @@ def episode(data, backbone, update_method, outputfilename, total_session_number,
         collate_fn = create_collate_fn(ms_tokenizer, 'ms prompt')
 
         
-        if backbone == "llama" and update_method in ["update", "accumulate", "independent"]:
+        if backbone == "llama" and update_method in ["update", "accumulate"]:
             gen_path = "/llama3_with_tag"
             gen_model, gen_tokenizer = get_peft_llama(gen_path, device)
 
@@ -124,7 +124,7 @@ def episode(data, backbone, update_method, outputfilename, total_session_number,
             gen_path = "/llama3_noshare_tag"
             gen_model, gen_tokenizer = get_peft_llama(gen_path, device)
 
-        elif backbone == "gemma" and update_method in ["update", "accumulate", "independent"]:
+        elif backbone == "gemma" and update_method in ["update", "accumulate"]:
             gen_path = "/gemma_with_tag"
             gen_model, gen_tokenizer = get_peft_gemma(gen_path, device)
 
@@ -164,8 +164,6 @@ def episode(data, backbone, update_method, outputfilename, total_session_number,
                 next_speaker = dialogues[-2]['speaker']
                 if update_method == "noshare":
                     ms_prompt = selection_session_prompt(previous_info, dia_no_tag_text, next_speaker, "noshare")
-                elif update_method == "independent":
-                    ms_prompt = selection_session_prompt(previous_info, dia_no_tag_text, next_speaker, "independent")
                 else:
                     ms_prompt = selection_session_prompt(previous_info, dia_no_tag_text, next_speaker, "share")
                 
@@ -175,14 +173,7 @@ def episode(data, backbone, update_method, outputfilename, total_session_number,
                 print("-"*100)
                 print(ms_prompt)
 
-                # generate response
-                if update_method == "independent":
-                    if next_speaker == s1_name:
-                        generate_prompt = response_session_prompt(dia_text_s1, selected_memory, next_speaker)
-                    else:
-                        generate_prompt = response_session_prompt(dia_text_s2, selected_memory, next_speaker) 
-                else:
-                    generate_prompt = response_session_prompt(dia_text, selected_memory, next_speaker)
+                generate_prompt = response_session_prompt(dia_text, selected_memory, next_speaker)
                 
                 print(f"Speaker: {next_speaker}\nGenerate Prompt:", generate_prompt)
                 response = model_response(generate_prompt, gen_model, gen_tokenizer, device)
@@ -285,7 +276,7 @@ def main():
             args.startnumber,
             args.endnumber
         )
-    elif args.method in ["update", "noshare", "independent"]:
+    elif args.method in ["update", "noshare"]:
         episode(
             filtered_data,
             args.backbone,

@@ -116,16 +116,6 @@ def selection_session_prompt(
         candidates_string, candidates = process_memory_selection_noshared(
             s1_name, s2_name, information
         )
-    elif method == "independent":
-        if next_speaker == s1_name:
-            info_list = [information.p1, information.t1, information.shared]
-        else:
-            info_list = [information.p2, information.t2, information.shared]
-        candidates = ["Everyday Language"] + [
-            item for info in info_list if info is not None for item in info
-        ]
-        random.shuffle(candidates)
-        candidates_string = "\n".join(f"- {value}" for idx, value in enumerate(candidates))
     else:
         assert False, "share or noshare?"
     
