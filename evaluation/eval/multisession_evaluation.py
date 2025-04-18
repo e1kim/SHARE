@@ -217,10 +217,10 @@ def get_gpt_response(prompt):
 		return None
 
 def get_score(response):
-    # 정규식으로 "Score: 숫자" 또는 "숫자 point(s)" 형태의 숫자 부분을 추출
+
     match = re.search(r"(?:Score:\s*(\d)|(\d)\s*point[s]?)", response, re.IGNORECASE)
     if match:
-        # 첫 번째 그룹이 매치되면 사용, 아니면 두 번째 그룹 사용
+
         score = int(match.group(1) or match.group(2))
         return score
     else:
@@ -230,10 +230,10 @@ def save_json(data, filename):
     with open(filename, 'w') as json_file:
         json.dump(data, json_file, indent=4, ensure_ascii=False)
 
-# 내용을 저장하는 함수
+
 def save_to_txt(evaluation, input_data, total_score, minus_count, args):
 	input_file = os.path.splitext(os.path.basename(args.input_file))[0]
-	with open(f"update1004.txt", 'a') as file:  # 'a' 모드로 열어서 이어서 작성
+	with open(f"save.txt", 'a') as file:  
 		file.write(f"Evaluation: {evaluation}\n")
 		file.write(f"Input data counts: {len(input_data)}\n")
 		file.write(f"Average score: {(total_score/len(input_data)):0.4f}\n")
@@ -249,11 +249,10 @@ def write_output(dataset, outputfilename):
 	
 def return_memory(info):
     def process_list(lst):
-        if not lst:  # 리스트가 비어있으면 빈 문자열을 반환
+        if not lst: 
             return ''
         return '\n'.join(['- ' + string for string in lst])
 
-    # 정보를 처리하는 부분
     persona1 = process_list(info['information']['p1'])
     persona2 = process_list(info['information']['p2'])
     personal1 = process_list(info['information']['t1'])
@@ -268,11 +267,10 @@ def return_memory(info):
 
 def return_shared_memory(info):
     def process_list(lst):
-        if not lst:  # 리스트가 비어있으면 빈 문자열을 반환
+        if not lst: 
             return ''
         return '\n'.join(['- ' + string for string in lst])
 
-    # 정보를 처리하는 부분
     shared_memory = process_list(info['information']['shared'])
 
 

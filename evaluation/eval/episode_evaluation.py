@@ -94,7 +94,7 @@ def load_session(filename):
 				last_session_data.update(data)
 		return last_session_data
 	except :
-		print(f"다른 방법으로 시도하거나, 파일을 확인하세요.")
+		print(f"check other method.")
 		return -1
 
 def load_data(path):
@@ -173,7 +173,7 @@ def parse_args():
 	return args
 
 def load_or_fallback(share_file, noshare_file):
-    # session 로드 시 -1일 경우 load_data로 대체
+
     share_data = load_session(share_file)
     noshare_data = load_session(noshare_file)
 
@@ -203,7 +203,7 @@ def main():
     args = parse_args()
     test_file = "../datasets/SHARE.json"
     test_data = load_data(test_file)
-    # 파일을 각각 로드 및 fallback 처리
+
     share_data1, noshare_data1 = load_or_fallback(args.share_file1, args.noshare_file1)
     share_data2, noshare_data2 = load_or_fallback(args.share_file2, args.noshare_file2)
     share_data3, noshare_data3 = load_or_fallback(args.share_file3, args.noshare_file3)
@@ -232,7 +232,7 @@ def main():
         dialogues5 = share_data3[key]['dia_no_tag_text']
 
         
-        # 각 점수 평가
+
         s_consistency_score = get_valid_score(consistency, dialogues1, dialogues2, dialogues3, dialogues4, dialogues5)
         s_reflectiveness_score = get_valid_score(reflectiveness, dialogues1, dialogues2, dialogues3, dialogues4, dialogues5)
         s_engagingness_score = get_valid_score(engagingness, dialogues1, dialogues2, dialogues3, dialogues4, dialogues5)
@@ -240,12 +240,12 @@ def main():
         dialogues3_noshare = noshare_data1[key]['dia_no_tag_text']
         dialogues4_noshare = noshare_data2[key]['dia_no_tag_text']
         dialogues5_noshare = noshare_data3[key]['dia_no_tag_text']
-        # 각 점수 평가
+
         n_consistency_score = get_valid_score(consistency, dialogues1, dialogues2, dialogues3_noshare, dialogues4_noshare, dialogues5_noshare)
         n_reflectiveness_score = get_valid_score(reflectiveness, dialogues1, dialogues2, dialogues3_noshare, dialogues4_noshare, dialogues5_noshare)
         n_engagingness_score = get_valid_score(engagingness, dialogues1, dialogues2, dialogues3_noshare, dialogues4_noshare, dialogues5_noshare)
 
-        # 각 대화에 대한 정보를 저장
+
         conversation_data = {
             'key': key,
             'dialogues': {
