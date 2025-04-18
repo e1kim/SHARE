@@ -9,11 +9,72 @@
 ## Datasets
 <img src="figure/Dataset_statistics.png" alt="Figure Description" width="500">
 
+### 📦 Download the Dataset
+
+You can download this dataset directly from Hugging Face:  
+👉 [https://huggingface.co/datasets/eunwoneunwon/SHARE](https://huggingface.co/datasets/eunwoneunwon/SHARE)
+
+### 🔽 How to Download
+
+```python
+mkdir -p datasets/
+cd datasets/
+git lfs install
+git clone https://huggingface.co/datasets/eunwoneunwon/SHARE
+```
+
+You can explore the SHARE dataset, which is organized into `train`, `validation`, and `test` splits under the `data/` directory.
+
+Each split is stored as a separate JSON file:
+```
+data/ 
+ └── train.json 
+ └── valid.json
+ └── test.json
+```
+### 💬 Example Dialogue
+
+Below is a sample from the `valid.json` split of the SHARE dataset:
+
+```json
+{
+  "session": 3,
+  "dialogues": [
+    {
+      "speaker": "BERADA",
+      "text": "I got you another six months. I told them it takes time.",
+      "label": [
+        "BERADA has ensured an extension of six months for the operation."
+      ]
+    },
+    {
+      "speaker": "DONNIE",
+      "text": "Same budget?",
+      "label": [
+        "DONNIE and BERADA share past interactions concerning the operation, which involves managing a budget for an ongoing operation."
+      ]
+    },
+    {
+      "speaker": "BERADA",
+      "text": "Same budget. Look, Joe, not that I don't see any movement, but--do you see any movement? I got my neck out on this.",
+      "label": [
+        "BERADA is responsible for managing the operation and feels pressure due to a lack of visible progress."
+      ]
+    },
+    {
+      "speaker": "DONNIE",
+      "text": "Whatever it takes, I'm gonna get these bastards.",
+      "label": [
+        "DONNIE is dedicated to his mission and willing to do whatever it takes."
+      ]
+    }
+  ]
+}
+
+```
 
 
-
-
-## Download
+## Model Download
 
 Below are the Hugging Face model links used in this project. You can easily access and download them by clicking on the model names.
 
