@@ -3,3 +3,4 @@ __pycache__/
 evaluation/**/*.json
 memory_selection
 evaluation/eval/check_shared.py
+datasets
