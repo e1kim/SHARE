@@ -1,4 +1,4 @@
-### This is the official project of paper: [SHARE: Shared Memory-Aware Open-Domain Long-Term Dialogue Dataset Constructed from Movie Script](https://arxiv.org/pdf/2410.20682)
+### This is the official project of paper: [ACL 2025] [SHARE: Shared Memory-Aware Open-Domain Long-Term Dialogue Dataset Constructed from Movie Script](https://arxiv.org/pdf/2410.20682)
 
 # Overview
 ![Figure Description](figure/Framework.png)
